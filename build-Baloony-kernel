@@ -1,0 +1,14 @@
+#!/bin/sh
+
+## Set compiler location
+echo Setting compiler location...
+export ARCH=arm
+export CROSS_COMPILE=~/toolchains/arm-eabi-4.4.3/bin/arm-eabi-
+make msm8660_defconfig
+make menuconfig
+sleep 1
+
+## Build Sultan kernel
+make -j100 ARCH=arm
+sleep 100
+echo zImage will be compiled to ~/Baloony Builds/arch/arm/boot 
